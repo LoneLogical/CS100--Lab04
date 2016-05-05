@@ -1,6 +1,9 @@
 #include <iostream>
 
 using namespace std;
+#include "sort.h"
+#include "container.h"
+
 
 int main() {
     Op* op7 = new Op(7);
