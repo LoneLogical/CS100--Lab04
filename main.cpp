@@ -1,6 +1,7 @@
 #include <iostream>
 
 using namespace std;
+#include "class.h"
 #include "sort.h"
 #include "container.h"
 
@@ -15,18 +16,36 @@ int main() {
     Sub* C = new Sub(B, op2);
     Sqr* D = new Sqr(C);
 
-    VectorContainer* container = new VectorContainer();
-    container->add_element(A);
-    container->add_element(B);
-    container->add_element(C);
-    container->add_element(D);
+    VectorContainer* container1 = new VectorContainer();
+    container1->add_element(A);
+    container1->add_element(B);
+    container1->add_element(C);
+    container1->add_element(D);
 
-    cout << "Container Before Sort" << endl;
-    container->print();
+    ListContainer* container2 = new ListContainer();
+    container2->add_element(A);
+    container2->add_element(B);
+    container2->add_element(C);
+    container2->add_element(D);
 
-    cout << "Container After Sort" << endl;
-    container->set_sort_function(new SelectionSort());
-    container->sort();
-    container->print();
+
+    cout << "Container1 Before Sort" << endl;
+    container1->print();
+
+    cout << "Container1 After Sort" << endl;
+    container1->set_sort_function(new BubbleSort());
+    container1->sort();
+    container1->print();
+
+    cout << "Container2 Before Sort" << endl;
+    container2->print();
+
+    cout << "Container2 After Sort" << endl;
+    container2->set_sort_function(new BubbleSort());
+    container2->sort();
+    container2->print();
+
+
+
     return 0;
 }

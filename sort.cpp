@@ -3,18 +3,23 @@
 
 using namespace std;
 #include "sort.h"
+#include "container.h"
 
 BubbleSort::BubbleSort() {};
 
-BubbleSort::virtual void sort(Container* container)
+void BubbleSort::sort(Container* container)
 {
-    for (int i = 0; i < container->size(); ++i)
+    int flag = 1;
+    int size = container->size();
+    for (int i = 1; (i <= size) && flag; i++)
     {
-        for (int j = 0; j < container->size() - i - 1; ++j)
+        flag = 0;
+        for (int j = 0; j < size - 1; j++)
         {
-            if ( container->at(j)->evaluate() < container->at(j + 1)->evaluate() )
+            if ( container->at(j)->evaluate() > container->at(j + 1)->evaluate() )
             {
                 container->swap(j, j + 1);
+                flag = 1;
             }
         }
     }
@@ -24,20 +29,20 @@ BubbleSort::virtual void sort(Container* container)
 
 SelectionSort::SelectionSort() {};
 
-SelectionSort::virtual void sort(Container* container)
+void SelectionSort::sort(Container* container)
 {
     int min;
-    for (int i = 0; i < container->size(); ++i)
+    int size = container->size();
+    for (int i = 0; i < size - 1; i++)
     {
         min = i;
-        for (int j = 0; j < container->size(); ++j)
+        for (int j = i + 1; j < size; j++)
         {
             if ( container->at(j)->evaluate() < container->at(min)->evaluate() )
             {
                 min = j;
             }
         }
-
         if (min != i)
         {
             container->swap(i, min);
